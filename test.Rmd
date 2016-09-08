@@ -1,0 +1,33 @@
+---
+title: "Linear"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Linear Regression
+
+내장 데이터셋을 활용해 선형회귀분석을 시도하였다.
+
+```{r regression}
+library(datasets)
+data("airquality")
+fit=lm(Temp~Ozone, airquality)
+summary(fit)
+attach(airquality)
+plot(Temp, Ozone)
+abline(fit)
+```
+
+p < 2.2e-16 < 0.001이므로 귀무가설을 기각할 수 있다. 절편과 기울기 또한 모두 유의하다.
+
+## Including Plots
+
+
+```{r pressure, echo=FALSE}
+plot(fit)
+```
+
+1~3번째 plot을 보면 선형성, 정규성 가정에는 큰 문제가 없으나 4번째 plot에는 이상점이 하나 존재한다.
